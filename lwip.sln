@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30717.126
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lwip", "lwip.vcxproj", "{384DBF80-0B6C-4AFB-A42E-B4FBF90FC2D3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{384DBF80-0B6C-4AFB-A42E-B4FBF90FC2D3}.Debug|x64.ActiveCfg = Debug|x64
+		{384DBF80-0B6C-4AFB-A42E-B4FBF90FC2D3}.Debug|x64.Build.0 = Debug|x64
+		{384DBF80-0B6C-4AFB-A42E-B4FBF90FC2D3}.Release|x64.ActiveCfg = Release|x64
+		{384DBF80-0B6C-4AFB-A42E-B4FBF90FC2D3}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3AF6F964-8214-4AD3-A6EF-0144B56F49DB}
+	EndGlobalSection
+EndGlobal
