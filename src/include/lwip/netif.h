@@ -105,8 +105,8 @@ extern "C" {
 /** If set, the netif has MLD6 capability.
  * Set by the netif driver in its init function. */
 #define NETIF_FLAG_MLD6         0x40U
-/** If set, the netif will ignore ARP requests. */
-#define NETIF_IGNORE_ARP_REQ    0x80U
+/** If set, the netif will ignore ARP requests and TCB requests with no destination. */
+#define NETIF_SHARED_RESOURCES  0x80U
 
 /**
  * @}

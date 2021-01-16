@@ -714,7 +714,7 @@ etharp_input(struct pbuf *p, struct netif *netif)
       /* ARP request for our address? */
       if (for_us && !from_us) {
         /* ARP not flagged to ignore? */
-        if(!(netif->flags & NETIF_IGNORE_ARP_REQ)) {
+        if(!(netif->flags & NETIF_SHARED_RESOURCES)) {
             /* send ARP response */
             etharp_raw(netif,
                    (struct eth_addr *)netif->hwaddr, &hdr->shwaddr,

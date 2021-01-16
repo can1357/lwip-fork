@@ -571,14 +571,18 @@ aborted:
     }
   } else {
     /* If no matching PCB was found, send a TCP RST (reset) to the
-       sender. */
-    LWIP_DEBUGF(TCP_RST_DEBUG, ("tcp_input: no PCB match found, resetting.\n"));
-    if (!(TCPH_FLAGS(tcphdr) & TCP_RST)) {
-      TCP_STATS_INC(tcp.proterr);
-      TCP_STATS_INC(tcp.drop);
-      tcp_rst(NULL, ackno, seqno + tcplen, ip_current_dest_addr(),
-              ip_current_src_addr(), tcphdr->dest, tcphdr->src);
-    }
+       sender if we're not sharing resources. */
+       if ( !( inp->flags & NETIF_SHARED_RESOURCES ) )
+       {
+           LWIP_DEBUGF( TCP_RST_DEBUG, ( "tcp_input: no PCB match found, resetting.\n" ) );
+           if ( !( TCPH_FLAGS( tcphdr ) & TCP_RST ) )
+           {
+               TCP_STATS_INC( tcp.proterr );
+               TCP_STATS_INC( tcp.drop );
+               tcp_rst( NULL, ackno, seqno + tcplen, ip_current_dest_addr(),
+                        ip_current_src_addr(), tcphdr->dest, tcphdr->src );
+           }
+       }
     pbuf_free(p);
   }
 
