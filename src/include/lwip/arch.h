@@ -45,7 +45,7 @@
 #define BIG_ENDIAN 4321
 #endif
 
-#include "arch/cc.h"
+#include "../lwipopts.h"
 
 /**
  * @defgroup compiler_abstraction Compiler/platform abstraction
