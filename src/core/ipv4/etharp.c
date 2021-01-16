@@ -713,12 +713,15 @@ etharp_input(struct pbuf *p, struct netif *netif)
       LWIP_DEBUGF (ETHARP_DEBUG | LWIP_DBG_TRACE, ("etharp_input: incoming ARP request\n"));
       /* ARP request for our address? */
       if (for_us && !from_us) {
-        /* send ARP response */
-        etharp_raw(netif,
+        /* ARP not flagged to ignore? */
+        if(!(netif->flags & NETIF_IGNORE_ARP_REQ)) {
+            /* send ARP response */
+            etharp_raw(netif,
                    (struct eth_addr *)netif->hwaddr, &hdr->shwaddr,
                    (struct eth_addr *)netif->hwaddr, netif_ip4_addr(netif),
                    &hdr->shwaddr, &sipaddr,
                    ARP_REPLY);
+        }
         /* we are not configured? */
       } else if (ip4_addr_isany_val(*netif_ip4_addr(netif))) {
         /* { for_us == 0 and netif->ip_addr.addr == 0 } */
