@@ -572,7 +572,7 @@ aborted:
   } else {
     /* If no matching PCB was found, send a TCP RST (reset) to the
        sender if we're not sharing resources. */
-       if ( !( inp->flags & NETIF_SHARED_RESOURCES ) )
+       if ( !( inp->flags & ( NETIF_SHARED_IP | NETIF_SHARED_ETH ) ) )
        {
            LWIP_DEBUGF( TCP_RST_DEBUG, ( "tcp_input: no PCB match found, resetting.\n" ) );
            if ( !( TCPH_FLAGS( tcphdr ) & TCP_RST ) )

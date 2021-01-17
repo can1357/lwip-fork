@@ -9,9 +9,7 @@
 
 // Modules.
 //
-#define LWIP_DHCP                          1		  // Enable DHCP + AutoIP, co-op.
-#define LWIP_AUTOIP                        1		  //
-#define LWIP_DHCP_AUTOIP_COOP              1		  //
+#define LWIP_DHCP                          1		  // Enable DHCP.
 #define LWIP_DNS                           1		  // Enable DNS.
 #define LWIP_NETCONN                       0		  // Disable unnecessary modules.
 #define LWIP_SOCKET                        0		  //

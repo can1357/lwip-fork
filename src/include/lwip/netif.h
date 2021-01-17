@@ -105,8 +105,10 @@ extern "C" {
 /** If set, the netif has MLD6 capability.
  * Set by the netif driver in its init function. */
 #define NETIF_FLAG_MLD6         0x40U
-/** If set, the netif will ignore ARP requests and TCB requests with no destination. */
-#define NETIF_SHARED_RESOURCES  0x80U
+/** If set, indicates that netif is on a shared MAC address. */
+#define NETIF_SHARED_ETH        0x80U
+/** If set, indicates that netif is on a shared IP address. */
+#define NETIF_SHARED_IP         0x100U
 
 /**
  * @}
@@ -353,7 +355,7 @@ struct netif {
   /** number of bytes used in hwaddr */
   u8_t hwaddr_len;
   /** flags (@see @ref netif_flags) */
-  u8_t flags;
+  u32_t flags;
   /** descriptive abbreviation */
   char name[2];
   /** number of this interface. Used for @ref if_api and @ref netifapi_netif,
