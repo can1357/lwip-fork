@@ -68,8 +68,10 @@
 #ifndef UDP_LOCAL_PORT_RANGE_START
 /* From http://www.iana.org/assignments/port-numbers:
    "The Dynamic and/or Private Ports are those from 49152 through 65535" */
-#define UDP_LOCAL_PORT_RANGE_START  0xc000
-#define UDP_LOCAL_PORT_RANGE_END    0xffff
+/** Changed to strictly fall out of IANA range but still fall in the 'usual' 
+ ** range, as in the case of linux kernels, for the convenience of pseduo NAT mode. */
+#define UDP_LOCAL_PORT_RANGE_START        32768 //0xc000
+#define UDP_LOCAL_PORT_RANGE_END          49152 //0xffff
 #define UDP_ENSURE_LOCAL_PORT_RANGE(port) ((u16_t)(((port) & (u16_t)~UDP_LOCAL_PORT_RANGE_START) + UDP_LOCAL_PORT_RANGE_START))
 #endif
 
