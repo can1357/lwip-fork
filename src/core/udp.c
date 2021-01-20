@@ -72,7 +72,7 @@
  ** range, as in the case of linux kernels, for the convenience of pseduo NAT mode. */
 #define UDP_LOCAL_PORT_RANGE_START        32768 //0xc000
 #define UDP_LOCAL_PORT_RANGE_END          49152 //0xffff
-#define UDP_ENSURE_LOCAL_PORT_RANGE(port) ((u16_t)(((port) & (u16_t)~UDP_LOCAL_PORT_RANGE_START) + UDP_LOCAL_PORT_RANGE_START))
+#define UDP_ENSURE_LOCAL_PORT_RANGE(port) ((u16_t)((port%(UDP_LOCAL_PORT_RANGE_END-UDP_LOCAL_PORT_RANGE_START))+UDP_LOCAL_PORT_RANGE_START))
 #endif
 
 /* last local UDP port */

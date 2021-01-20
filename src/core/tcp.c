@@ -126,7 +126,7 @@
  ** range, as in the case of linux kernels, for the convenience of pseduo NAT mode. */
 #define TCP_LOCAL_PORT_RANGE_START        32768 //0xc000
 #define TCP_LOCAL_PORT_RANGE_END          49152 //0xffff
-#define TCP_ENSURE_LOCAL_PORT_RANGE(port) ((u16_t)(((port) & (u16_t)~TCP_LOCAL_PORT_RANGE_START) + TCP_LOCAL_PORT_RANGE_START))
+#define TCP_ENSURE_LOCAL_PORT_RANGE(port) ((u16_t)((port%(TCP_LOCAL_PORT_RANGE_END-TCP_LOCAL_PORT_RANGE_START))+TCP_LOCAL_PORT_RANGE_START))
 #endif
 
 #if LWIP_TCP_KEEPALIVE
