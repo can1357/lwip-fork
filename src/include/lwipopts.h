@@ -9,10 +9,10 @@
 
 // Modules.
 //
-#define LWIP_DHCP                          1		  // Enable DHCP.
 #define LWIP_DNS                           1		  // Enable DNS.
 #define LWIP_NETCONN                       0		  // Disable unnecessary modules.
 #define LWIP_SOCKET                        0		  //
+#define LWIP_DHCP                          0
 
 // Module configuration.
 //
