@@ -574,13 +574,13 @@ aborted:
        sender if we're not sharing resources. */
        if ( !( inp->flags & ( NETIF_SHARED_IP | NETIF_SHARED_ETH ) ) )
        {
-    LWIP_DEBUGF(TCP_RST_DEBUG, ("tcp_input: no PCB match found, resetting.\n"));
-    if (!(TCPH_FLAGS(tcphdr) & TCP_RST)) {
-      TCP_STATS_INC(tcp.proterr);
-      TCP_STATS_INC(tcp.drop);
-      tcp_rst_netif(ip_data.current_input_netif, ackno, seqno + tcplen, ip_current_dest_addr(),
-              ip_current_src_addr(), tcphdr->dest, tcphdr->src);
-    }
+        LWIP_DEBUGF(TCP_RST_DEBUG, ("tcp_input: no PCB match found, resetting.\n"));
+        if (!(TCPH_FLAGS(tcphdr) & TCP_RST)) {
+          TCP_STATS_INC(tcp.proterr);
+          TCP_STATS_INC(tcp.drop);
+          tcp_rst_netif(ip_data.current_input_netif, ackno, seqno + tcplen, ip_current_dest_addr(),
+                  ip_current_src_addr(), tcphdr->dest, tcphdr->src);
+        }
        }
     pbuf_free(p);
   }
