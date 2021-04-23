@@ -18,12 +18,12 @@
 //
 #define LWIP_RANDOMIZE_INITIAL_LOCAL_PORTS 1
 #define ARP_TABLE_SIZE                     64
-#define LWIP_TCP_KEEPALIVE                 1
+#define LWIP_TCP_KEEPALIVE                 0 //1
 #define TCP_MSS                            1460
-#define TCP_SND_BUF                        0xC000
+#define TCP_SND_BUF                        0xFFFF
 #define TCP_OVERSIZE                       TCP_MSS
 #define LWIP_WND_SCALE                     1
-#define TCP_RCV_SCALE                      6
+#define TCP_RCV_SCALE                      8
 #define TCP_WND                            (TCP_SND_BUF << TCP_RCV_SCALE)
 
 // Memory settings.
@@ -36,6 +36,8 @@
 #define MEMP_NUM_PBUF                      1024
 #define MEMP_NUM_TCP_PCB                   32
 #define MEMP_NUM_TCP_SEG                   512
+
+#define TCP_TMR_INTERVAL                   10
 
 // Debug options.
 //
