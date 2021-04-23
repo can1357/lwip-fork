@@ -2,7 +2,7 @@
 #define LWIP_HDR_LWIPOPTS_H
 #include <stdint.h>
 
-// Overall settings.
+// Overall configuration.
 //
 #define NO_SYS                             1
 #define SYS_LIGHTWEIGHT_PROT               0		  // We'll always be at the proper IRQL and locked.
@@ -19,25 +19,31 @@
 #define LWIP_RANDOMIZE_INITIAL_LOCAL_PORTS 1
 #define ARP_TABLE_SIZE                     64
 #define LWIP_TCP_KEEPALIVE                 0 //1
+
+
+// TCP configuration.
+//
 #define TCP_MSS                            1460
 #define TCP_SND_BUF                        0xFFFF
 #define TCP_OVERSIZE                       TCP_MSS
+#define TCP_SND_QUEUELEN                   512
 #define LWIP_WND_SCALE                     1
-#define TCP_RCV_SCALE                      8
-#define TCP_WND                            (TCP_SND_BUF << TCP_RCV_SCALE)
+#define TCP_RCV_SCALE                      0
+#define TCP_WND                            0xFFFF
+#define TCP_TMR_INTERVAL                   250
+//#define TCP_RCV_SCALE                      8
+//#define TCP_WND                            (TCP_SND_BUF << TCP_RCV_SCALE)
 
-// Memory settings.
+// Memory configuration.
 //
 #define MEM_LIBC_MALLOC                    1
 #define MEMP_MEM_MALLOC                    1
-#define MEM_SIZE                           (1024 * 1024)
-#define IP_REASS_MAX_PBUFS                 64
-#define PBUF_POOL_SIZE                     1024
-#define MEMP_NUM_PBUF                      1024
+#define MEM_SIZE                           (1024 * 1024 * 64)
+#define IP_REASS_MAX_PBUFS                 256
+#define PBUF_POOL_SIZE                     4096
+#define MEMP_NUM_PBUF                      4096
 #define MEMP_NUM_TCP_PCB                   32
-#define MEMP_NUM_TCP_SEG                   512
-
-#define TCP_TMR_INTERVAL                   10
+#define MEMP_NUM_TCP_SEG                   4096
 
 // Debug options.
 //
