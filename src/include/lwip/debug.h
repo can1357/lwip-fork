@@ -113,8 +113,8 @@
  */
 
 #ifndef LWIP_NOASSERT
-#define LWIP_ASSERT(message, assertion) do { if (!(assertion)) { \
-  LWIP_PLATFORM_ASSERT(message); }} while(0)
+#define LWIP_ASSERT(message, assertion) do { if (__builtin_expect(!(assertion), 0)) { \
+  LWIP_PLATFORM_ASSERT(message); __builtin_unreachable(); }} while(0)
 #else  /* LWIP_NOASSERT */
 #define LWIP_ASSERT(message, assertion)
 #endif /* LWIP_NOASSERT */
@@ -127,7 +127,7 @@
 #endif
 
 /* if "expression" isn't true, then print "message" and execute "handler" expression */
-#define LWIP_ERROR(message, expression, handler) do { if (!(expression)) { \
+#define LWIP_ERROR(message, expression, handler) do { if (__builtin_expect(!(expression), 0)) { \
   LWIP_PLATFORM_ERROR(message); handler;}} while(0)
 #endif /* LWIP_ERROR */
 

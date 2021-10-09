@@ -377,7 +377,7 @@
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <FloatingPointModel>Fast</FloatingPointModel>
-      <AdditionalOptions>-flto %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>-flto -Xclang -fwhole-program-vtables %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -398,7 +398,7 @@
       </PrecompiledHeaderFile>
       <AdditionalIncludeDirectories>
       </AdditionalIncludeDirectories>
-      <AdditionalOptions>-flto %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>-flto -Xclang -fwhole-program-vtables %(AdditionalOptions)</AdditionalOptions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
