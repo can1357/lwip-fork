@@ -278,6 +278,7 @@ struct tcp_pcb {
   u8_t polltmr, pollinterval;
   u8_t last_timer;
   u32_t tmr;
+  u32_t syn_sent_tmr;
 
   /* receiver variables */
   u32_t rcv_nxt;   /* next seqno expected */

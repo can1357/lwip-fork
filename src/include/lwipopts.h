@@ -18,7 +18,7 @@
 //
 #define LWIP_RANDOMIZE_INITIAL_LOCAL_PORTS 1
 #define ARP_TABLE_SIZE                     64
-#define LWIP_TCP_KEEPALIVE                 0 //1
+#define LWIP_TCP_KEEPALIVE                 1
 
 
 // TCP configuration.

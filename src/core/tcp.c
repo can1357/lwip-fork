@@ -1180,6 +1180,7 @@ tcp_connect(struct tcp_pcb *pcb, const ip_addr_t *ipaddr, u16_t port,
   if (ret == ERR_OK) {
     /* SYN segment was enqueued, changed the pcbs state now */
     pcb->state = SYN_SENT;
+	 pcb->syn_sent_tmr = tcp_ticks;
     if (old_local_port != 0) {
       TCP_RMV(&tcp_bound_pcbs, pcb);
     }
@@ -1367,6 +1368,15 @@ tcp_slowtmr_start:
       tcp_free_ooseq(pcb);
     }
 #endif /* TCP_QUEUE_OOSEQ */
+	 
+    /* Check if this PCB has stayed too long in SYN-SENT */
+    if (pcb->state == SYN_SENT) {
+      if ((u32_t)(tcp_ticks - pcb->syn_sent_tmr) >
+          TCP_SYN_SENT_TIMEOUT / TCP_SLOW_INTERVAL) {
+        ++pcb_remove;
+        LWIP_DEBUGF(TCP_DEBUG, ("tcp_slowtmr: removing pcb stuck in SYN-SENT\n"));
+      }
+    }
 
     /* Check if this PCB has stayed too long in SYN-RCVD */
     if (pcb->state == SYN_RCVD) {

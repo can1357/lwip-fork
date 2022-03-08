@@ -127,6 +127,7 @@ err_t            tcp_process_refused_data(struct tcp_pcb *pcb);
 
 #define TCP_FIN_WAIT_TIMEOUT 10000 /* milliseconds */
 #define TCP_SYN_RCVD_TIMEOUT 10000 /* milliseconds */
+#define TCP_SYN_SENT_TIMEOUT 10000 /* milliseconds */
 
 #define TCP_OOSEQ_TIMEOUT        6U /* x RTO */
 
