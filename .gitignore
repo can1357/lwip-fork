@@ -49,3 +49,4 @@
 /contrib/ports/win32/msvc/.vs
 
 x64/
+.vs/

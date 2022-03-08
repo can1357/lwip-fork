@@ -125,8 +125,8 @@ err_t            tcp_process_refused_data(struct tcp_pcb *pcb);
 #define TCP_SLOW_INTERVAL      (2*TCP_TMR_INTERVAL)  /* the coarse grained timeout in milliseconds */
 #endif /* TCP_SLOW_INTERVAL */
 
-#define TCP_FIN_WAIT_TIMEOUT 20000 /* milliseconds */
-#define TCP_SYN_RCVD_TIMEOUT 20000 /* milliseconds */
+#define TCP_FIN_WAIT_TIMEOUT 10000 /* milliseconds */
+#define TCP_SYN_RCVD_TIMEOUT 10000 /* milliseconds */
 
 #define TCP_OOSEQ_TIMEOUT        6U /* x RTO */
 
