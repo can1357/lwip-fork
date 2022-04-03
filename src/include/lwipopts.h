@@ -18,21 +18,19 @@
 //
 #define LWIP_RANDOMIZE_INITIAL_LOCAL_PORTS 1
 #define ARP_TABLE_SIZE                     64
-#define LWIP_TCP_KEEPALIVE                 1
+//#define LWIP_TCP_KEEPALIVE                 1
 
 
 // TCP configuration.
 //
 #define TCP_MSS                            1460
-#define TCP_SND_BUF                        0xFFFF
-#define TCP_OVERSIZE                       TCP_MSS
-#define TCP_SND_QUEUELEN                   512
-#define LWIP_WND_SCALE                     1
-#define TCP_RCV_SCALE                      0
 #define TCP_WND                            0xFFFF
-#define TCP_TMR_INTERVAL                   250
-//#define TCP_RCV_SCALE                      8
-//#define TCP_WND                            (TCP_SND_BUF << TCP_RCV_SCALE)
+#define TCP_SND_BUF                        TCP_WND
+#define LWIP_WND_SCALE                     1
+#define TCP_RCV_SCALE                      8
+#define TCP_SND_QUEUELEN                   TCP_SNDQUEUELEN_OVERFLOW
+#define TCP_TMR_INTERVAL                   100
+#define TCP_OVERSIZE                       TCP_MSS
 
 // Memory configuration.
 //
