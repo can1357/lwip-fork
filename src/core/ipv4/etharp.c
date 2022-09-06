@@ -58,6 +58,9 @@
 
 #include <string.h>
 
+//#undef LWIP_DEBUGF
+//#define LWIP_DEBUGF(a, x) (void)printf x
+
 #ifdef LWIP_HOOK_FILENAME
 #include LWIP_HOOK_FILENAME
 #endif
