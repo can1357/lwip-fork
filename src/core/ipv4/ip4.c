@@ -531,8 +531,7 @@ ip4_input(struct pbuf *p, struct netif *inp)
   /* verify checksum */
 #if CHECKSUM_CHECK_IP
   IF__NETIF_CHECKSUM_ENABLED(inp, NETIF_CHECKSUM_CHECK_IP) {
-    if (inet_chksum(iphdr, iphdr_hlen) != 0) {
-
+    if (iphdr->_chksum != 0 && inet_chksum(iphdr, iphdr_hlen) != 0) {
       LWIP_DEBUGF(IP_DEBUG | LWIP_DBG_LEVEL_SERIOUS,
                   ("Checksum (0x%"X16_F") failed, IP packet dropped.\n", inet_chksum(iphdr, iphdr_hlen)));
       ip4_debug_print(p);
