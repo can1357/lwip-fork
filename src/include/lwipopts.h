@@ -68,7 +68,7 @@ extern "C" {
 //
 #define LWIP_DEBUG                         1
 #define LWIP_DBG_MIN_LEVEL                 LWIP_DBG_LEVEL_WARNING // LWIP_DBG_LEVEL_ALL
-#define LWIP_DBG_TYPES_ON                  0x7F
+#define LWIP_DBG_TYPES_ON                  0xF7
 #define ETHARP_DEBUG                       LWIP_DBG_ON
 #define NETIF_DEBUG                        LWIP_DBG_ON
 #define PBUF_DEBUG                         LWIP_DBG_ON
