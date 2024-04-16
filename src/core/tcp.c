@@ -127,8 +127,8 @@
 
 /** Changed to strictly fall out of IANA range but still fall in the 'usual' 
  ** range, as in the case of linux kernels, for the convenience of pseudo NAT mode. */
-#define TCP_LOCAL_PORT_RANGE_START        0xc000 //0xc000
-#define TCP_LOCAL_PORT_RANGE_END          0xffff //0xffff
+#define TCP_LOCAL_PORT_RANGE_START        32768 
+#define TCP_LOCAL_PORT_RANGE_END          49152 
 #define TCP_ENSURE_LOCAL_PORT_RANGE(port) ((u16_t)((port%(TCP_LOCAL_PORT_RANGE_END-TCP_LOCAL_PORT_RANGE_START))+TCP_LOCAL_PORT_RANGE_START))
 #endif
 

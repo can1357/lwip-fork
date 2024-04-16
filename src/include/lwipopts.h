@@ -24,28 +24,30 @@
 // TCP/IP configuration.
 //
 #define IP_REASS_MAX_PBUFS				   0xFFFFFFFF
-//#define LWIP_WND_SCALE                     1
-//#define TCP_RCV_SCALE                      3
+#define LWIP_WND_SCALE                     1
+#define TCP_RCV_SCALE                      5
 #define TCP_MSS                            1460
-#define TCP_WND                            0xFFFF
+#define TCP_WND                            0xffff
 #define TCP_SND_BUF                        TCP_WND
 #define TCP_SND_QUEUELEN                   TCP_SNDQUEUELEN_OVERFLOW
-#define TCP_TMR_INTERVAL				   200
+#define TCP_TMR_INTERVAL				   100
 #define TCP_OVERSIZE                       TCP_MSS
-#define LWIP_TCP_TIMESTAMPS                0
-#define LWIP_TCP_KEEPALIVE                 0
+#define LWIP_TCP_TIMESTAMPS                1
+#define LWIP_TCP_KEEPALIVE                 1
 #define LWIP_TCP_SACK_OUT                  0
-#define TCP_QUEUE_OOSEQ                    0
+#define TCP_QUEUE_OOSEQ                    1
 #define CHECKSUM_CHECK_IP                  1
 #define CHECKSUM_CHECK_TCP                 0
 #define CHECKSUM_CHECK_UDP                 1
+#define LWIP_CHECKSUM_ON_COPY              1
 
 // Memory configuration.
 //
 #define MEM_LIBC_MALLOC                    1
 #define MEMP_MEM_MALLOC                    1
 #define MEM_SIZE                           (1024 * 1024 * 1024)
-#define PBUF_POOL_SIZE                     4096
+#define PBUF_POOL_SIZE                     32768
+#define PBUF_POOL_BUFSIZE                  4096
 #define MEMP_NUM_PBUF                      4096
 #define MEMP_NUM_TCP_PCB                   32
 #define MEMP_NUM_TCP_SEG                   4096
@@ -57,6 +59,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
+	void __cdecl sys_assert_core_locked();
 	uint32_t __cdecl sys_rand();
 	uint32_t __cdecl sys_jiffies();
 	uint32_t __cdecl sys_now();
@@ -115,5 +118,6 @@ extern "C" {
 #endif
 
 #define LWIP_RAND() sys_rand()
+#define LWIP_ASSERT_CORE_LOCKED() sys_assert_core_locked()
 
 #endif /* LWIP_HDR_LWIPOPTS_H */

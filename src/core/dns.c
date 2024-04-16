@@ -1603,6 +1603,14 @@ dns_gethostbyname_addrtype(const char *hostname, ip_addr_t *addr, dns_found_call
     ip_addr_set_loopback(LWIP_DNS_ADDRTYPE_IS_IPV6(dns_addrtype), addr);
     return ERR_OK;
   }
+#else
+  if ( strcmp( hostname, "localhost" ) == 0 ) {
+      if ( netif_default ) {
+          addr->addr = netif_default->ip_addr.addr;
+          return ERR_OK;
+      }
+      return ERR_CLSD;
+  }
 #endif /* LWIP_HAVE_LOOPIF */
 
   /* host name already in octet notation? set ip addr and return ERR_OK */
